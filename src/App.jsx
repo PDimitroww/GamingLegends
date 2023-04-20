@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React from "react";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./components/Home";
 import { GameBox } from "./components/GameBox";
+import { SectionInfo } from "./components/SectionInfo";
+import { SectionTestimonials } from "./components/SectionTestimonials";
 import "./fonts/RobotoCondensed-Bold.ttf";
 import "./fonts/RobotoCondensed-Regular.ttf";
 
@@ -13,6 +15,8 @@ function App() {
       <NavBar />
       <Home />
       <GameBox />
+      <SectionInfo />
+      <SectionTestimonials />
     </div>
   );
 }

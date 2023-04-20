@@ -1,5 +1,4 @@
 import react, { useState, useEffect } from "react";
-import { NavBar } from "./NavBar";
 
 export const Home = () => {
   return (

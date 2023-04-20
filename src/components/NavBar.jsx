@@ -1,6 +1,8 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../public/LOGO.svg";
 import { BsSearch } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 export const NavBar = () => {
@@ -19,7 +21,14 @@ export const NavBar = () => {
             <BsSearch />
           </button>
         </div>
-        <p>React</p>
+        <div>
+          <button className="btn btnCart">
+            <BsCart3 />
+          </button>
+          <button className="btn btnLogin">
+            <BsFillPersonFill />
+          </button>
+        </div>
       </nav>
     </IconContext.Provider>
   );
