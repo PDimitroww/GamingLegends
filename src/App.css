@@ -1,22 +1,50 @@
 :root {
   --color-white: #f1f1f1;
   --color-background: #272727;
+  --color-lightgrey: #999;
   --color-background-darker: #101010;
+  --color-background-signUp: #1e1e1e;
   --color-background-Testimonials: rgba(217, 217, 217, 16%);
   --text-shadow: #a93cff;
   --gradient-main: linear-gradient(to right, #a93cff, #44e9ff);
   --color-orange: #ffa800;
   --color-lightblue: #44e9ff;
-}
 
-.navbar {
-  max-width: 100%;
+  /* Socials */
+  --facebook: #0062e0;
+  --instagram: #ff008c;
+  --youtube: #ff0000;
+  --twitch: #9000ff;
+}
+/* NavBar */
+
+#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1rem;
   position: fixed;
   width: 100%;
+  z-index: 1;
+}
+
+.scrolled {
+  background-color: var(--color-background-darker);
+  height: 7.5rem;
+}
+
+.scrolled img {
+  height: 6.5rem;
+}
+
+.scrolled .searchBar {
+  height: 4rem;
+  font-size: 2rem;
+}
+
+.scrolled .searchBar__btn {
+  height: 4rem;
+  width: 4rem;
 }
 
 .searchContainer {
@@ -30,10 +58,35 @@
   border: none;
   outline: none;
   border-radius: 10rem;
-  box-shadow: 0 1rem 2rem rgba(black, 0.1);
   padding: 2rem;
   transition: all 0.2s;
   background-color: var(--color-background);
+  color: var(--color-white);
+  transition: all 0.5s;
+}
+
+.searchBar:hover {
+  width: 60.8rem;
+}
+
+.searchBar__btn {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--gradient-main);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.2s;
+  transition-delay: 0.1s;
+}
+
+.searchBar__btn:hover {
+  cursor: pointer;
+}
+
+.searchBar::placeholder {
   color: var(--color-white);
 }
 
@@ -59,30 +112,8 @@
 .btnLogin {
   background: var(--color-lightblue);
 }
-.searchBar:hover {
-  width: 60.8rem;
-}
 
-.searchBar__btn {
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
-  border: none;
-  background: var(--gradient-main);
-  position: absolute;
-  top: 0;
-  right: 0;
-  transition: all 0.2s;
-  transition-delay: 0.1s;
-}
-
-.searchBar__btn:hover {
-  cursor: pointer;
-}
-
-.searchBar::placeholder {
-  color: var(--color-white);
-}
+/* Section Home */
 
 .home {
   position: relative;
@@ -112,7 +143,6 @@
   padding: 2rem 15rem;
   max-width: 100%;
   height: 100vh;
-  background: var(--color-background);
 }
 
 .viewAll__Btn {
@@ -132,6 +162,8 @@
   gap: 4rem;
 }
 
+/* Section info */
+
 .infoCell {
   height: 15rem;
   background-color: var(--color-background-darker);
@@ -144,12 +176,22 @@
 .infoCell__textBox {
   position: relative;
   width: 50rem;
+  z-index: 0;
+}
+
+.infoCell__textBox h2 {
+  color: var(--color-white);
+}
+
+.infoCell__textBox span {
+  line-height: 0;
+  color: var(--color-orange);
 }
 
 .infoCell__textBox:not(:last-child)::after {
   content: "";
   position: absolute;
-  background-color: var(--color-background);
+  background-color: var(--color-orange);
   height: 9rem;
   width: 0.3rem;
   top: 1rem;
@@ -157,18 +199,143 @@
 }
 
 .section_testimonials {
-  display: grid;
   height: 45rem;
-  align-items: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .testimonials {
-  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 2rem;
+  height: auto;
   background-color: var(--color-background-Testimonials);
   border-radius: 2rem;
+  padding: 3rem 2rem;
 }
 
-.testimonials_grid {
-  grid-template-columns: repeat(4, 25rem);
+.testimonials img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.testimonials span {
+  color: var(--color-orange);
+}
+
+.testimonials p {
+  color: var(--color-white);
+  font-size: 1.5rem;
+}
+
+/* Section Sign up */
+
+.signUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 21rem;
+  border-top: 0.2px solid var(--color-background-darker);
+  background: var(--color-background-signUp);
+}
+
+.signUp p {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: var(--color-lightgrey);
+}
+
+.loginLink:link,
+.loginLink:visited {
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+.loginLink:hover,
+.loginLink:active {
+  color: var(--color-white);
+}
+
+.btn_signUp {
+  width: 16rem;
+  height: 6rem;
+  background-color: var(--color-orange);
+  border-radius: 1rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-top: 1.5rem;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  height: 32rem;
+  background-color: var(--color-background-darker);
+  padding-top: 5rem;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.links:link,
+.links:visited {
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.links:hover,
+.links:active {
+  color: var(--text-shadow);
+}
+
+.socials-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socials-box h6 {
+  margin-bottom: 2rem;
+}
+
+.socials {
+  display: flex;
+  gap: 3rem;
+  font-size: 4rem;
+}
+
+.icons {
+  display: flex;
+  padding: 1.2rem;
+  border-radius: 50%;
+}
+
+.fb {
+  color: var(--facebook);
+  background-color: #ffeeeecb;
+}
+
+.is {
+  color: var(--instagram);
+  background-color: #7700ff56;
+}
+
+.yt {
+  color: var(--youtube);
+  background-color: #ffffff;
+}
+
+.tw {
+  color: var(--twitch);
+  background-color: #4400ffc2;
 }

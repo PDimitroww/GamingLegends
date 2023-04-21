@@ -6,9 +6,27 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 export const NavBar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 150) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <IconContext.Provider value={{ color: "white", size: "20px" }}>
-      <nav className="navbar">
+      <nav id="navbar" className={scrolled ? "scrolled" : ""}>
         <img src={logo} alt="logo" />
         <div className="searchContainer">
           <input
