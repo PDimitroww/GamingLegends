@@ -11,6 +11,11 @@
   --color-orange: #ffa800;
   --color-lightblue: #44e9ff;
 
+  /* Pagination */
+
+  --hover-transparent: rgba(255, 255, 255, 0.192);
+  --active-transparent: rgba(255, 255, 255, 0.315);
+
   /* Socials */
   --facebook: #0062e0;
   --instagram: #ff008c;
@@ -248,6 +253,78 @@
   border-radius: 1rem;
   background: var(--gradient-main);
   margin-bottom: 4rem;
+}
+
+/* Pagination */
+.pagination-bar {
+  justify-content: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+}
+
+.pagination-item {
+  padding: 0 1.2rem;
+  height: 3.2rem;
+  text-align: center;
+  margin: auto 4px;
+  color: var(--color-orange);
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  letter-spacing: 0.01071em;
+  border-radius: 1.6rem;
+  line-height: 1.43;
+  font-size: 2rem;
+  /* min-width: 32px; */
+}
+
+.pagination-item:hover {
+  background-color: var(--hover-transparent);
+  cursor: pointer;
+}
+
+.dots:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.selected {
+  background-color: var(--active-transparent);
+}
+
+.arrow::before {
+  position: relative;
+  /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
+  content: "";
+  /* By using an em scale, the arrows will size with the font */
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 0.12em solid var(--color-white);
+  border-top: 0.12em solid var(--color-white);
+  text-align: center;
+  top: -0.8px;
+}
+
+.left {
+  transform: rotate(-135deg);
+}
+
+.right {
+  transform: rotate(45deg);
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.disabled .arrow::before {
+  border-right: 0.12em solid var(--active-transparent);
+  border-top: 0.12em solid var(--active-transparent);
 }
 
 /* Section info */
