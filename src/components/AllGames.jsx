@@ -1,28 +1,15 @@
-import { useState, useEffect, useMemo } from "react";
-import Pagination from "../components/pagination/Pagination";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-// components
 import { GameBox } from "../components/GameBox";
-const key = import.meta.env.VITE_API_KEY;
-const pageSize = 6;
 
-export const Page = () => {
+export const AllGames = () => {
   const navigate = useNavigate();
-  const navigateToGames = () => {
-    navigate("/AllGames");
+  const navigateBack = () => {
+    navigate("/page");
   };
 
   const [games, setGames] = useState([]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const gamesInfo = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return games.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
 
   useEffect(() => {
     const handleGameList = () => {
@@ -49,24 +36,17 @@ export const Page = () => {
 
   return (
     <>
-      <div className="container">
-        <button onClick={navigateToGames} className="btn viewAll__Btn">
-          View all
+      <section className="container" id={AllGames}>
+        <button onClick={navigateBack} className="btn viewAll__Btn">
+          Go Back
         </button>
+        <h2 className="h2-all">All Games</h2>
         <div className="items__grid">
-          {gamesInfo.map((game, index) => {
+          {games.map((game, index) => {
             return <GameBox key={index} game={game} />;
           })}
         </div>
-
-        <Pagination
-          className="pagination-bar"
-          currentPage={currentPage}
-          totalCount={games.length}
-          pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </div>
+      </section>
     </>
   );
 };
